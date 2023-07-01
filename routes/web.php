@@ -18,9 +18,6 @@ Route::get('/', function () {
 });
 
 use App\Http\Controllers\Admin\NewsController;
-Route::controller(NewsController::class)->prefix('admin')->group(function() {
-    Route::get('news/create', 'add');
-});
 
 use App\Http\Controllers\XXX\AAAController;
 Route::controller(AAAController::class)->prefix('XXX')->group(function() {
@@ -28,14 +25,19 @@ Route::controller(AAAController::class)->prefix('XXX')->group(function() {
 });
 
 use App\Http\Controllers\Admin\ProfileController;
-Route::controller(ProfileController::class)->prefix('admin')->group(function() {
-    Route::get('profile/create', 'add')->middleware('auth');
-    Route::get('profile/edit', 'edit')->middleware('auth');
+
+Route::controller(ProfileController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('profile/create', 'add')->name('profile.add');
+    Route::post('profile/create', 'create')->name('profile.create');
+    Route::get('profile/edit', 'edit')->name('profile.edit');
+    Route::post('profile/edit', 'edit')->name('profile.edit');
 });
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::controller(NewsController::class)->prefix('admin')->group(function() {
-    Route::get('news/create', 'add')->middleware('auth');
+Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('news/create', 'add')->name('news.add');
+    Route::post('news/create', 'create')->name('news.create');
 });
