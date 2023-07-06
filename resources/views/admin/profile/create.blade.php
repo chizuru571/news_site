@@ -7,7 +7,6 @@
             <div class="col-md-8 mx-auto">
                 <h2>プロフィール</h2>
                 <form action="{{ route('admin.profile.create') }}" method="post" enctype="multipart/form-data">
-
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
@@ -25,8 +24,8 @@
                     <div class="form-group row">
                         <label class="col-md-2">性別</label>
                         <div class="col-md-10">
-                            <label><input type="radio" name="gender" value="{{ old('gender') }}" checked>男性</label>
-                            <label><input type="radio" name="gender" value="{{ old('gender') }}">女性</label>
+                            <label><input type="radio" name="gender" value="male" checked>男性</label>
+                            <label><input type="radio" name="gender" value="female">女性</label>
                         </div>
                     </div>  
                     
