@@ -32,7 +32,11 @@
                     <div class="form-group row">
                         <label class="col-md-2">趣味</label>
                         <div class="col-md-10">
+<<<<<<< Updated upstream
                             <input type="text" class="form-control" name="hobby" value="{{ $profile_form->hobby }}">
+=======
+                            <input type="text" class="form-control" name="hobby" value="{{ $profile_form->hobby}}">
+>>>>>>> Stashed changes
                         </div>
                     </div>  
                     
