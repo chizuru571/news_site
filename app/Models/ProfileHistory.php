@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class History extends Model
+class ProfileHistory extends Model
 {
     use HasFactory;
 
     protected $guarded = array('id');
 
     public static $rules = array(
-        'news_id' => 'required',
+        'profile_id' => 'required',
         'edited_at' => 'required'
     );
     
-        // News Modelに関連付けを行う
-    public function histories()
+    public function profilehistories()
     {
-        return $this->hasMany('App\Models\History');
+        return $this->hasMany('App\Models\ProfileHistory');
     }
 }
