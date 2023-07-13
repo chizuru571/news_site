@@ -46,3 +46,6 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
     Route::post('news/edit', 'update')->name('news.update');
     Route::get('news/delete', 'delete')->name('news.delete');
 });
+
+use App\Http\Controllers\NewsController as PublicNewsController;
+Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
