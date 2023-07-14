@@ -49,3 +49,6 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
 
 use App\Http\Controllers\NewsController as PublicNewsController;
 Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
+
+use App\Http\Controllers\ProfileController as PublicProfileController;
+Route::get('profile', [PublicProfileController::class, 'index'])->name('profile.index');
