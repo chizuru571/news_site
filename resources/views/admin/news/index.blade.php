@@ -8,7 +8,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <a href="{{ route('admin.news.add') }}" role="button" class="btn btn-primary">新規作成</a>
+                <a href="{{ route('admin.news.add') }}" role="button" class="btn btn-primary">新規作成する</a>
             </div>
             <div class="col-md-8">
                 <form action="{{ route('admin.news.index') }}" method="get">
