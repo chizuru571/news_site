@@ -15,9 +15,16 @@ class ProfileHistory extends Model
         'profile_id' => 'required',
         'edited_at' => 'required'
     );
-    
-    public function profilehistories()
-    {
-        return $this->hasMany('App\Models\ProfileHistory');
-    }
+
+    /**
+     * モデル関連付けるテーブル
+     *
+     * @var string
+     */
+    protected $table = 'profilehistories';
+
+    // public function profilehistories()
+    // {
+    //     return $this->hasMany('App\Models\ProfileHistory');
+    // }
 }
