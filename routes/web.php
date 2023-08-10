@@ -19,10 +19,10 @@ Route::get('/', function () {
 
 use App\Http\Controllers\Admin\NewsController;
 
-use App\Http\Controllers\XXX\AAAController;
-Route::controller(AAAController::class)->prefix('XXX')->group(function() {
-    Route::get('XXX', 'bbb');
-});
+// use App\Http\Controllers\XXX\AAAController;
+// Route::controller(AAAController::class)->prefix('XXX')->group(function() {
+//     Route::get('XXX', 'bbb');
+// });
 
 use App\Http\Controllers\Admin\ProfileController;
 
