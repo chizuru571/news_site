@@ -16,9 +16,9 @@ class History extends Model
         'edited_at' => 'required'
     );
     
-        // News Modelに関連付けを行う
-    public function histories()
-    {
-        return $this->hasMany('App\Models\History');
-    }
+    //     // News Modelに関連付けを行う
+    // public function histories()
+    // {
+    //     return $this->hasMany('App\Models\History');
+    // }
 }
