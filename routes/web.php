@@ -49,6 +49,8 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
 
 use App\Http\Controllers\NewsController as PublicNewsController;
 Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
+// ニュース詳細のルーティング設定を追加
+Route::get('/detail', [PublicNewsController::class, 'detail'])->name('news.detail');
 
 use App\Http\Controllers\ProfileController as PublicProfileController;
 Route::get('profile', [PublicProfileController::class, 'index'])->name('profile.index');
