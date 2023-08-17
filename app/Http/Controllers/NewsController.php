@@ -34,4 +34,6 @@ class NewsController extends Controller
         }
         return view('news.detail', ['news' => $news]);
     }
+    
+    // コメントのアクションを追加
 }
