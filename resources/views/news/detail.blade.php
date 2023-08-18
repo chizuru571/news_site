@@ -25,10 +25,24 @@
             </div>
         </div>
         <hr color="#c0c0c0">
+        <div class="row mt-5">
+                    <div class="col-md-4 mx-auto">
+                        <h2>コメント</h2>
+                        <ul class="list-group">
+                            @if ($news->comments != NULL)
+                                @foreach ($news->comments as $comment)
+                                    <li class="list-group-item">{{ $comment->comment }}<br>
+                                    {{ $comment->created_at->format('Y年m月d日H時i分') }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+        <hr color="#c0c0c0">
         <div class="row">
         <div class="col-md-8 mx-auto">
             <h2>コメント投稿</h2>
-            <form action="{{ route('news.comment') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('news.detail') }}" method="post" enctype="multipart/form-data">
                 @if (count($errors) > 0)
                     <ul>
                         @foreach($errors->all() as $e)
