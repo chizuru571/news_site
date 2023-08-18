@@ -52,7 +52,8 @@ Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
 // ニュース詳細のルーティング設定を追加
 Route::get('/detail', [PublicNewsController::class, 'detail'])->name('news.detail');
 // ニュース詳細のルーティング設定にコメント追加
-Route::post('/detail', [PublicNewsController::class, 'comment'])->name('news.comment');
+Route::get('/comment', [PublicNewsController::class, 'add'])->name('news.add');
+Route::post('/comment', [PublicNewsController::class, 'comment'])->name('news.comment');
 
 use App\Http\Controllers\ProfileController as PublicProfileController;
 Route::get('profile', [PublicProfileController::class, 'index'])->name('profile.index');

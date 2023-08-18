@@ -39,15 +39,17 @@ class NewsController extends Controller
     
     public function add(Request $request)
     {
-        return view('news.detail');
+        return view('news.comment');
     }    
     
     public function comment(Request $request)
     {
-        $this->validate($request, Comment::$rules);
+         $this->validate($request, Comment::$rules);
 
         $comment = new Comment;
         $form = $request->all();
+
+
         // フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
 
@@ -58,4 +60,6 @@ class NewsController extends Controller
         // /commentにリダイレクトする
         return redirect('detail?id=' . $comment->news_id);
     }
+    
+
 }
