@@ -11,7 +11,7 @@
                             <div class="caption mx-auto">
                                 <div class="image">
                                     @if ($headline->image_path)
-                                        <a href="{{ route('news.detail', ['id' => $headline->id]) }}"><img src="{{ secure_asset('storage/image/' . $headline->image_path) }}"></a>
+                                        <a href="{{ route('news.detail', ['id' => $news->id]) }}"><img src="{{ secure_asset('storage/image/' . $headline->image_path) }}"></a>
                                     @endif
                                 </div>
                                 <div class="title p-2">
@@ -37,7 +37,7 @@
                                     {{ $post->updated_at->format('Y年m月d日') }}
                                 </div>
                                 <div class="title">
-                                    <a href="{{ route('news.detail', ['id' => $headline->id]) }}">{{ Str::limit($post->title, 150) }}</a>
+                                    <a href="{{ route('news.detail', ['id' => $post->id]) }}">{{ Str::limit($post->title, 150) }}</a>
                                 </div>
                                 <div class="body mt-3">
                                     {{ Str::limit($post->body, 1500) }}
@@ -45,7 +45,7 @@
                             </div>
                             <div class="image col-md-6 text-right mt-4">
                                 @if ($post->image_path)
-                                    <a href="{{ route('news.detail', ['id' => $headline->id]) }}"><img src="{{ secure_asset('storage/image/' . $post->image_path) }}"></a>
+                                    <a href="{{ route('news.detail', ['id' => $post->id]) }}"><img src="{{ secure_asset('storage/image/' . $post->image_path) }}"></a>
                                 @endif
                             </div>
                         </div>
