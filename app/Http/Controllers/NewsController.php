@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 // 追記
 use App\Models\News;
+use App\Models\Comment;
+use Auth;
 
 class NewsController extends Controller
 {
@@ -35,5 +37,29 @@ class NewsController extends Controller
         return view('news.detail', ['news' => $news]);
     }
     
-    // コメントのアクションを追加
+    public function add(Request $request)
+    {
+        return view('news.comment');
+    }    
+    
+    public function comment(Request $request)
+    {
+         $this->validate($request, Comment::$rules);
+
+        $comment = new Comment;
+        $form = $request->all();
+
+
+        // フォームから送信されてきた_tokenを削除する
+        unset($form['_token']);
+
+        // データベースに保存する
+        $comment->fill($form);
+        $comment->user_id= Auth::id();
+        $comment->save();
+        // /commentにリダイレクトする
+        return redirect('detail?id=' . $comment->news_id);
+    }
+    
+
 }
