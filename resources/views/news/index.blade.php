@@ -1,4 +1,5 @@
 @extends('layouts.front')
+@section('title', 'ニュース一覧')
 
 @section('content')
     <div class="container">
@@ -11,7 +12,7 @@
                             <div class="caption mx-auto">
                                 <div class="image">
                                     @if ($headline->image_path)
-                                        <a href="{{ route('news.detail', ['id' => $news->id]) }}"><img src="{{ secure_asset('storage/image/' . $headline->image_path) }}"></a>
+                                        <a href="{{ route('news.detail', ['id' => $headline->id]) }}"><img src="{{ secure_asset('storage/image/' . $headline->image_path) }}"></a>
                                     @endif
                                 </div>
                                 <div class="title p-2">
@@ -55,5 +56,7 @@
             </div>
         </div>
     </div>
+    <div class="d-flex justify-content-center">
+    {{ $posts->links() }}
     </div>
 @endsection

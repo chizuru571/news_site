@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 // 追記
 use App\Models\News;
@@ -13,15 +14,13 @@ class NewsController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = News::all()->sortByDesc('updated_at');
-
+        $query = News::query();
+        $posts = $query->orderByDesc('updated_at')->paginate(10);
         if (count($posts) > 0) {
             $headline = $posts->shift();
         } else {
             $headline = null;
         }
-
-        // news/index.blade.php ファイルを渡している
         // また View テンプレートに headline、 posts、という変数を渡している
         return view('news.index', ['headline' => $headline, 'posts' => $posts]);
     }
@@ -34,7 +33,9 @@ class NewsController extends Controller
         if (empty($news)) {
             abort(404);
         }
-        return view('news.detail', ['news' => $news]);
+        
+        $comments = $news->comments->sortByDesc('updated_at');
+        return view('news.detail', ['news' => $news,'comments' =>$comments]);
     }
     
     public function add(Request $request)
@@ -44,7 +45,7 @@ class NewsController extends Controller
     
     public function comment(Request $request)
     {
-         $this->validate($request, Comment::$rules);
+        $this->validate($request, Comment::$rules);
 
         $comment = new Comment;
         $form = $request->all();
@@ -60,6 +61,4 @@ class NewsController extends Controller
         // /commentにリダイレクトする
         return redirect('detail?id=' . $comment->news_id);
     }
-    
-
 }

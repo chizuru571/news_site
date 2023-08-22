@@ -18,4 +18,10 @@ class News extends Model
     {
         return $this->hasMany('App\Models\History');
     }
+    
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
 }

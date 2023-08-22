@@ -2025,9 +2025,9 @@ progress {
 }
 
 .table-dark {
-  --bs-table-color: #fff;
-  --bs-table-bg: #212529;
-  --bs-table-border-color: #373b3e;
+  --bs-table-color: #000;
+  --bs-table-bg: #f5f5f5;
+  --bs-table-border-color: #a9a9a9;
   --bs-table-striped-bg: #2c3034;
   --bs-table-striped-color: #fff;
   --bs-table-active-bg: #373b3e;
@@ -3038,7 +3038,7 @@ textarea.form-control-lg {
 
 .btn-success {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #198754;
+  --bs-btn-bg: #008000;
   --bs-btn-border-color: #198754;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #157347;
