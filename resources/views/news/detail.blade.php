@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title', 'ニュース詳細')
+@section('title'){{ $news->title }}@endsection
 
     @section('content')
         <div class="container">
@@ -32,7 +32,13 @@
                             <ul class="list-group list-group-flush ">
                                 @if ($comments != NULL)
                                     @foreach ($comments as $comment)
+                                        @if ($comment->user_id == Auth::id())
+                                        {{-- 自分のコメント --}}
+                                        <li class="list-group-item my-comment">
+                                        @else
+                                        {{-- 他の人のコメント --}}
                                         <li class="list-group-item">
+                                        @endif
                                         {{ $comment->user_id}}　|　{{ $comment->created_at->format('Y年m月d日H時i分') }}<br>
                                         {{ $comment->comment }}
                                         </li>

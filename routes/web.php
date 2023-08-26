@@ -36,7 +36,7 @@ Route::controller(ProfileController::class)->prefix('admin')->name('admin.')->mi
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('news.index');
 
 Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('news/create', 'add')->name('news.add');

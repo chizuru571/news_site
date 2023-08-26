@@ -16,10 +16,12 @@ class NewsController extends Controller
     {
         $query = News::query();
         $posts = $query->orderByDesc('updated_at')->paginate(10);
-        if (count($posts) > 0) {
-            $headline = $posts->shift();
-        } else {
-            $headline = null;
+        
+        $headline = null;
+        if (empty($request->page) || $request->page == 1) {
+            if (count($posts) > 0) {
+                $headline = $posts->shift();
+            }
         }
         // また View テンプレートに headline、 posts、という変数を渡している
         return view('news.index', ['headline' => $headline, 'posts' => $posts]);

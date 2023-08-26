@@ -3,17 +3,16 @@
 
 @section('content')
     <div class="container">
-        <hr color="#c0c0c0">
         @if (!is_null($headline))
             <div class="row">
                 <div class="headline col-md-10 mx-auto">
                     <div class="row">
+                        {{-- 画像あり --}}
+                        @if ($headline->image_path)
                         <div class="col-md-6">
                             <div class="caption mx-auto">
                                 <div class="image">
-                                    @if ($headline->image_path)
                                         <a href="{{ route('news.detail', ['id' => $headline->id]) }}"><img src="{{ secure_asset('storage/image/' . $headline->image_path) }}"></a>
-                                    @endif
                                 </div>
                                 <div class="title p-2">
                                     <a href="{{ route('news.detail', ['id' => $headline->id]) }}"><h1>{{ Str::limit($headline->title, 70) }}</h1></a>
@@ -23,11 +22,17 @@
                         <div class="col-md-6">
                             <p class="body mx-auto">{{ Str::limit($headline->body, 650) }}</p>
                         </div>
+                        @else
+                            {{-- 画像なし --}}
+                            <a href="{{ route('news.detail', ['id' => $headline->id]) }}"><h1>{{$headline->title }}</h1></a>
+                            <p class="body mx-auto">{{ Str::limit($headline->body, 650) }}</p>
+                            @endif
                     </div>
-                </div>
+                    </div>
             </div>
         @endif
         <hr color="#c0c0c0">
+        </div>
         <div class="row">
             <div class="posts col-md-8 mx-auto mt-3">
                 @foreach($posts as $post)
