@@ -29,7 +29,7 @@
             <hr color="#c0c0c0">
             <div class="row">
                         <div class="col-md-8 mx-auto">
-                            <ul class="list-group list-group-flush ">
+                            <ul class="list-group ">
                                 @if ($comments != NULL)
                                     @foreach ($comments as $comment)
                                         @if ($comment->user_id == Auth::id())
